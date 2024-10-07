@@ -11,6 +11,17 @@ body {
   width: 100%;
 }
 
+$typo-end-color: #ef5da8;
+$typo-start-color: #5d5fef;
+
+$typo-year-color: #3877ee;
+$typo-body-color: #42567a;
+
+$desktop-gap: calc(100vw - 1440px);
+
+$internal-padding: calc($desktop-gap / 3);
+$internal-padding-x2: calc($internal_padding * 2);
+
 #root {
   height: 100%;
   width: 100%;
@@ -19,4 +30,393 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-left: $internal_padding_x2;
+  padding-right: $internal_padding;
+
+  background-color: #f0f0f0;
+}
+
+.hist-dates {
+  &__container {
+    position: relative;
+    width: 1440px;
+    height: 100vh;
+    color: $typo-body-color;
+    font-family: "PT Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 0;
+
+    &-line {
+      position: absolute;
+      background-color: #42567a;
+
+      &__vertical {
+        height: 100%;
+        width: 1px;
+      }
+
+      &__horizontal {
+        height: 1px;
+        width: 100%;
+      }
+
+      &__left {
+        top: 0;
+        left: 0;
+      }
+
+      &__right {
+        top: 0;
+        right: 0;
+      }
+
+      &__center {
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      &__circle-wrapper {
+        position: absolute;
+        height: 530px;
+        width: 530px;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        bottom: 0;
+        margin-top: 215px;
+        margin-left: auto;
+        margin-right: auto;
+
+        @media screen and (max-width: 1440px) {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 1440px) {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 1440px) {
+      padding-left: 20px;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    margin-top: 170px;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 67px;
+    display: flex;
+    flex-direction: row;
+    gap: 75px;
+    align-items: center;
+    cursor: default;
+
+    &::before {
+      display: block;
+      content: "";
+      width: 5px;
+      height: 120px;
+      background: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
+
+      @media screen and (max-width: 1440px) {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 1440px) {
+      margin-top: 60px;
+      font-size: 20px;
+      line-height: 24px;
+      display: block;
+    }
+  }
+
+  &__dates {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 96px;
+    gap: 93px;
+    font-size: 200px;
+    font-weight: 700;
+    line-height: 160px;
+    z-index: 0;
+    cursor: default;
+    position: relative;
+
+    @media screen and (max-width: 1440px) {
+      gap: 26px;
+      margin-top: 56px;
+      font-size: 56px;
+      line-height: 72px;
+      justify-content: flex-start;
+    }
+  }
+
+  &__date {
+    &-start {
+      color: $typo-start-color;
+    }
+    &-end {
+      color: $typo-end-color;
+    }
+  }
+
+  &-cards {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    align-items: center;
+    gap: 8px;
+
+    &-pagination {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      padding-left: 80px;
+
+      &__wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
+
+      &__steps {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        &__wrapper {
+          display: none;
+          width: 100%;
+
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+
+          position: absolute;
+          bottom: 0;
+
+          @media screen and (max-width: 1440px) {
+            display: flex;
+          }
+        }
+
+        &-step {
+          border-radius: 9999px;
+          width: 6px;
+          height: 6px;
+          cursor: pointer;
+          border: 0;
+          background-color: #42567a;
+          opacity: 0.4;
+
+          &__active {
+            opacity: 1;
+          }
+        }
+      }
+
+      &-counter {
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      &-controls {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        & > button {
+          border-radius: 9999px;
+          height: 50px;
+          width: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          border: 1px solid rgba(66, 86, 122, 0.5);
+
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+
+          @media screen and (max-width: 1440px) {
+            height: 25px;
+            width: 25px;
+
+            & > svg {
+              height: 8px;
+              width: 4px;
+            }
+          }
+        }
+
+        @media screen and (max-width: 1440px) {
+          gap: 8.33px;
+        }
+      }
+
+      @media screen and (max-width: 1440px) {
+        padding-left: 0;
+        padding-right: 20px;
+      }
+    }
+
+    &-pagibutton {
+      border-radius: 9999px;
+      border: 0;
+      box-shadow: 0px 0px 15px 0px rgba(56, 119, 238, 0.1);
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: default;
+      }
+
+      @media screen and (max-width: 1440px) {
+        display: none;
+      }
+    }
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-top: 120px;
+      gap: 56px;
+      position: relative;
+      z-index: 0;
+
+      @media screen and (max-width: 1440px) {
+        margin-top: 56px;
+        border-top: 1px solid #c7cdd9;
+        padding-top: 20px;
+        flex-direction: column-reverse;
+      }
+    }
+
+    @media screen and (max-width: 1440px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &-card {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: fit-content;
+
+      padding-right: 80px;
+
+      @media screen and (max-width: 1440px) {
+        padding-right: 25px;
+      }
+    }
+
+    &__title {
+      font-size: 25px;
+      line-height: 30px;
+      font-family: "Bebas Neue", sans-serif;
+      color: $typo-year-color;
+
+      @media screen and (max-width: 1440px) {
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+
+    &__description {
+      line-height: 1.5;
+      width: fit-content;
+      min-width: 320px;
+      max-width: 400px;
+      height: 90px;
+
+      @media screen and (max-width: 1440px) {
+        font-size: 14px;
+        line-height: 20px;
+
+        height: max-content;
+        width: auto;
+        min-width: 166px;
+        max-width: 200px;
+        min-height: 80px;
+        max-height: 80px;
+
+        overflow: hidden; /* Скрыть содержимое, которое выходит за пределы по высоте */
+        white-space: normal; /* Разрешить перенос текста на новую строку */
+        word-wrap: break-word; /* Переносить слова по необходимости */
+      }
+    }
+  }
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.circle-container {
+  position: relative;
+  width: 530px;
+  height: 530px;
+
+  @media screen and (max-width: 1440px) {
+    display: none;
+  }
+}
+
+.point {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(66, 86, 122, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0px; /* Текст скрыт в неактивном состоянии */
+  cursor: pointer;
+  transition: transform, background-color 0.2s ease;
+}
+
+.point.active,
+.point:hover {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(48, 62, 88, 0.5);
+  font-size: 20px; /* Увеличиваем текст */
+  background-color: white;
+}
+
+.point-number {
+  --current-deg: 0deg;
+  transform: rotate(var(--current-deg)); /* Отключаем вращение текста */
+  transition: transform 1s ease-in-out;
+}
+
+.swiper-slide {
+  width: fit-content;
 }

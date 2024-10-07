@@ -1,3 +1,5 @@
+import { HistoryDatesWidget } from "./ui";
+
 export const App = () => {
-  return <div>Some things</div>;
+  return <HistoryDatesWidget />;
 };
