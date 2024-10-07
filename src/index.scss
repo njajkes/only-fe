@@ -107,7 +107,8 @@ $internal-padding-x2: calc($internal_padding * 2);
   }
 
   &__title {
-    margin-top: 170px;
+    // margin-top: 170px;
+    margin-top: 120px;
     font-weight: 700;
     font-size: 56px;
     line-height: 67px;
